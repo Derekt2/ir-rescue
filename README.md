@@ -10,6 +10,18 @@
 
 *ir-rescue* has been written for incident response and forensic analysts, as well as for security practitioners alike, and is used in companies such as Cisco, PepsiCo, SaskTel, Praetorian and Counteractive Security. It represents an effort to streamline host data collection, regardless of investigation needs, and to rely less on on-site support when remote access or live analysis is unavailable. It can thus be used to leverage the already bundled tools and commands during forensic activities.
 
+# How to use this fork
+
+This script has only a few changes to make it scalable to a massive number of hosts. By default - the config file does not capture massive amounts of browser caches, memfiles, or directory listings. This saves time and allows it to use on average less than 100MB per host. It also maps a UNC to a local drive to allow for saving of the output to a share drive for easier retrieval and doesn't delete host generating data.
+* Background: Reccomended to deploy via GPO as a immediate task to discover as much information as possible as quickly as possible. This is not meant to replace traditional EDR or logging to detect future threats.
+* Setup: Download this zip and unzip it in a public samba share on the DC - such as SYSVOL. ENSURE only ADMINS have modify access to the folder, but everyone has read/execute. Create a new folder next to the windows batch script called ```output``` and ensure everyone has write access. 
+* Deployment: Login to domain controller as domain admin. Open group policy console, create new GPO for entire domain, edit it, under control panel create new scheduled task (immediate task windows 7 or higher). Under user enter SYSTEM, for trigger add:
+```cmd```  and for arguments:
+
+	```/c  start /high "" "\\UNCPATHTOSCRIPT"```
+	
+	under settings select run with highest privs, when user logs in, delete if runs more than 2 hours, and run only once
+
 # Dependencies and Usage
 
 *ir-rescue* relies on a number of **third-party utilities for gathering specific data** from hosts. The versions of the tools are listed in the last section and are provided with the package as is and, therefore, their licenses and user agreements must be accepted before running *ir-rescue*. Note that Sysinternals utilities cannot be redistributed for others to copy according to the [Sysinternals Software License Terms](https://docs.microsoft.com/en-us/sysinternals/license-terms "Sysinternals Software License Terms"). Because of this, *ir-rescue* is no longer published along with Sysinternals utilities, and so all entries enumerated in section Third-Party Tool List and References must be downloaded from the [Sysinternals Live Repository](https://live.sysinternals.com/ "Sysinternals Live Repository") and moved into their appropriate folders in order for the script to run.

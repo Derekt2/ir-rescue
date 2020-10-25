@@ -33,6 +33,7 @@
 		attrib -H .\set.txt.tmp > NUL 2>&1
 		del /Q .\set.txt.tmp > NUL 2>&1
 		call:help
+		popd
 		exit /B 1
 	)
 
@@ -80,6 +81,7 @@
 	:: if %ckillself% equ true goto 2 > NUL & del /F /Q %~f0
 	:: end local variable environment
 	endlocal
+	popd
 	exit /B 0
 
 
@@ -1288,6 +1290,7 @@
 
 	cls
 	echo.&echo   initializing...
+	pushd "%~dp0"
 	set /A f=0
 
 	:: check tools and files
@@ -1521,7 +1524,7 @@
 		if not exist !coutpath! set coutpath=.
 		set SYSDATE=%COMPUTERNAME%-%YYYYMMDD%
 		set SYSTEM=!coutpath!\!SYSDATE!
-		set DATA=!coutpath!\data
+		set DATA=!coutpath!\!SYSDATE!
 		set ROOT=!DATA!\!SYSDATE!
 		set META=!ROOT!\%NAME%
 		set ACTIV=!ROOT!\activ
@@ -1646,6 +1649,7 @@
 		set RUN=true
 		echo. >> !SYSROOTT!
 	)
+	popd
 	exit /B %f%
 
 :end
@@ -1738,6 +1742,7 @@
 		if %csdel% equ true rmdir /Q /S .\%TOOLS% > NUL 2>&1
 	)
 	echo.&echo terminus / end / fin / fim / fine / einde / koniec
+	popd
 	chcp %CHCP% > NUL 2>&1
 	call:pause
 	goto:eof
