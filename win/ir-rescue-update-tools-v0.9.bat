@@ -158,8 +158,8 @@ call:DOWNLOAD_ERIC https://f001.backblazeb2.com/file/EricZimmermanTools/JLECmd.z
 call:DOWNLOAD_ERIC https://f001.backblazeb2.com/file/EricZimmermanTools/ShellBagsExplorer.zip SBECmd %BASEDIR%\%SHL%
 
 :: DOWNLOAD RawCopy
-call:DOWNLOAD_FILE https://github.com/jschicht/RawCopy/raw/master/RawCopy64.exe %BASEDIR%\%RCP64%
-call:DOWNLOAD_FILE https://github.com/jschicht/RawCopy/raw/master/RawCopy.exe %BASEDIR%\%RCP%
+REM call:DOWNLOAD_FILE https://github.com/jschicht/RawCopy/raw/master/RawCopy64.exe %BASEDIR%\%RCP64%
+REM call:DOWNLOAD_FILE https://github.com/jschicht/RawCopy/raw/master/RawCopy.exe %BASEDIR%\%RCP%
 
 :: DOWNLOAD ExtractUsnJrnl
 call:DOWNLOAD_FILE https://github.com/jschicht/ExtractUsnJrnl/raw/master/ExtractUsnJrnl64.exe %BASEDIR%\%EUJ64%
