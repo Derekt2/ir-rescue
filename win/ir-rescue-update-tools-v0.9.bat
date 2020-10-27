@@ -162,8 +162,8 @@ REM call:DOWNLOAD_FILE https://github.com/jschicht/RawCopy/raw/master/RawCopy64.
 REM call:DOWNLOAD_FILE https://github.com/jschicht/RawCopy/raw/master/RawCopy.exe %BASEDIR%\%RCP%
 
 :: DOWNLOAD ExtractUsnJrnl
-call:DOWNLOAD_FILE https://github.com/jschicht/ExtractUsnJrnl/raw/master/ExtractUsnJrnl64.exe %BASEDIR%\%EUJ64%
-call:DOWNLOAD_FILE https://github.com/jschicht/ExtractUsnJrnl/raw/master/ExtractUsnJrnl.exe %BASEDIR%\%EUJ%
+REM call:DOWNLOAD_FILE https://github.com/jschicht/ExtractUsnJrnl/raw/master/ExtractUsnJrnl64.exe %BASEDIR%\%EUJ64%
+REM call:DOWNLOAD_FILE https://github.com/jschicht/ExtractUsnJrnl/raw/master/ExtractUsnJrnl.exe %BASEDIR%\%EUJ%
 
 :: DOWNLOAD rifiuti-vista
 call:DOWNLOAD_RIFI https://github.com/abelcheung/rifiuti2/releases/download/0.6.1/rifiuti2-0.6.1-win.zip
