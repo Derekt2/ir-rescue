@@ -1,4 +1,5 @@
 @echo off
+pushd "%~dp0"
 
 :main
 	:: start local variable environment
@@ -10,6 +11,7 @@
 	if not %iargs% equ 0 (
 		echo.&echo  ERROR: too many arguments [%iargs%].
 		call:help
+		popd
 		exit /B 1
 	)
 	:: check for elevated (administrator) permissions
@@ -17,6 +19,7 @@
 	if not %errorLevel% equ 0 (
 		echo.&echo  ERROR: %~nx0 is running without administrator rights.
 		call:help
+		popd
 		exit /B 1
 	)
 	:: check for free disk space
@@ -81,7 +84,6 @@
 	:: if %ckillself% equ true goto 2 > NUL & del /F /Q %~f0
 	:: end local variable environment
 	endlocal
-	popd
 	exit /B 0
 
 
@@ -1290,7 +1292,6 @@
 
 	cls
 	echo.&echo   initializing...
-	pushd "%~dp0"
 	set /A f=0
 
 	:: check tools and files
@@ -1538,7 +1539,6 @@
 		set SYS=!ROOT!\sys
 		set WEB=!ROOT!\web
 		set LOG=!META!\%NAME%.log
-
 		call:cleandrn !DATA! %TEMPIR%
 		call:cleanfn !SYSTEM!.7z
 		mkdir !DATA! !ROOT! !META! %TEMPIR%
@@ -1649,7 +1649,6 @@
 		set RUN=true
 		echo. >> !SYSROOTT!
 	)
-	popd
 	exit /B %f%
 
 :end
@@ -1735,7 +1734,7 @@
 		) else (
 			%ZIP% a -t7z -xr"^!.*" -mmt=on %SYSTEM%.7z %ROOT% > NUL 2>&1
 		)
-		if exist %SYSTEM%.7z call:cleandrn %DATA%
+REM		if exist %SYSTEM%.7z call:cleandrn %DATA%
 	)
 	if %ckillself% equ true (
 		call:cleandrn .\%TOOLS%
