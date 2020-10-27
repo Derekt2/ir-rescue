@@ -1305,7 +1305,6 @@ pushd "%~dp0"
 	if not exist %CONF%	 (echo.&echo  ERROR: %CONF% not found. & set /A f=1)
 	if not exist %DS%	 (echo.&echo  ERROR: %DS% not found. & set /A f=1)
 	if not exist %DV%	 (echo.&echo  ERROR: %DV% not found. & set /A f=1)
-	if not exist %EUJ%	 (echo.&echo  ERROR: %EUJ% not found. & set /A f=1)
 	if not exist %EXIF%	 (echo.&echo  ERROR: %EXIF% not found. & set /A f=1)
 	if not exist %FLS%	 (echo.&echo  ERROR: %FLS% not found. & set /A f=1)
 	if not exist %GREP%	 (echo.&echo  ERROR: %GREP% not found. & set /A f=1)
